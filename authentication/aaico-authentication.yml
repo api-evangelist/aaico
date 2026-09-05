@@ -1,0 +1,71 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.opus.com/api-reference/quickstart
+docs:
+- https://developer.opus.com/api-reference/introduction
+- https://developer.opus.com/api-reference/quickstart
+- https://developer.opus.com/api-reference/v1-case/case-introduction
+- https://developer.opus.com/api-reference/v1-integration/integration-introduction
+api: Opus Platform API
+base_url: https://operator.opus.com/api/v1
+note: >-
+  Derived from the published API reference, not from an OpenAPI document — AAICO publishes no
+  machine-readable spec for the Opus platform API (see conformance/). The scheme below was also
+  confirmed live: an unauthenticated GET of https://operator.opus.com/api/v1 returns HTTP 401
+  with {"statusCode":401,"message":"API key is required"}.
+schemes:
+- id: serviceKey
+  type: apiKey
+  in: header
+  name: x-service-key
+  required: true
+  description: >-
+    A single static service key sent on every request. The key carries the acting user's identity,
+    their organization, and the workspaces they can target; each endpoint additionally requires a
+    named permission in the target workspace.
+  applies_to: all endpoints
+  scoped: false
+oauth2: false
+openid_connect: false
+mutual_tls: false
+basic_auth: false
+bearer_token: false
+x-evidence:
+  probe:
+    url: https://operator.opus.com/api/v1
+    method: GET
+    http_status: 401
+    body: '{"statusCode":401,"message":"API key is required","timestamp":"...","path":"/api/v1"}'
+    fetched: '2026-09-05'
+key_management:
+  self_service: true
+  console_path: Opus button (top left) -> Channels -> API
+  create: '+ Generate API Key, with a key name and a required expiry'
+  shown_once: true
+  rotation: manual; keys are deleted and regenerated from the API page
+  expiry: required at creation (Key Expiry field)
+  listed_metadata: [name, creation date, expiration date, last used date]
+  revoke: Delete from the API page
+  docs: https://developer.opus.com/api-reference/quickstart
+permissions:
+  model: named permissions granted per workspace, plus organization-level grants
+  observed:
+  - name: 'Workflow: Full'
+    level: workspace
+    required_by: [generate workflow, cancel run, get run status, get workflow details]
+  - name: 'Integration: Full'
+    level: organization
+    required_by: [create provider, create integration, add credential]
+    note: >-
+      Explicitly organization-level — a workspace-level grant is not sufficient, because
+      integrations belong to the organization rather than to a workspace.
+failure_modes:
+- status: 401
+  when: missing, invalid or expired key, or the key's user is no longer a member of the organization
+- status: 403
+  when: the key is valid but the user lacks the required permission in the target workspace/organization
+gaps:
+- No OAuth 2.0 or OpenID Connect surface, so there is no delegated/third-party authorization path.
+- No scope system — permissions are console-granted roles, not token scopes, so scopes/ is not applicable.
+- Keys are not prefixed, so a leaked key is not identifiable by shape.
+- No documented programmatic key-management endpoints; keys are created and revoked in the UI only.

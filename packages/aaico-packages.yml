@@ -1,0 +1,82 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  Registry searches against registry.npmjs.org, pypi.org, plus the Opus developer hub SDK section
+  and llms.txt index.
+official_package_count: 0
+sdk_count: 0
+note: >-
+  AAICO publishes NO installable client SDK for the Opus platform API on any public registry. The
+  only thing the docs call an "SDK" is a runtime-injected, in-platform Python object — see
+  in_platform_sdk below — which is not distributed and cannot be installed. Integrators call the
+  REST API directly; the docs give raw cURL, Python `requests` and JavaScript `fetch` examples for
+  every endpoint rather than SDK calls. A Postman collection is the only packaged client artifact,
+  and it is distributed as a Google Drive download rather than through a Postman public workspace.
+packages: []
+in_platform_sdk:
+  name: Opus SDK
+  language: Python
+  registry: none
+  installable: false
+  version: null
+  published: null
+  docs: https://developer.opus.com/opus-sdk/overview
+  description: >-
+    Inside an Opus Code task the identifier `Opus` is already defined; `Opus.file` provides
+    download, presigned_download, create and upload against Opus file storage, returning OpusFile
+    objects. It exists only in the platform's own Python execution sandbox.
+  note: >-
+    version and published are null because there is nothing to version: this SDK has no registry,
+    no package name and no release feed. Checked, nothing to record — not "not checked". Its
+    surface moves with the platform release line (currently 2.6) and is not independently
+    versioned. Third-party Python packages usable inside Opus Code are listed at
+    https://developer.opus.com/opus-sdk/available-packages.
+registries_checked:
+- registry: npm
+  endpoint: https://registry.npmjs.org/
+  queried: [opus-sdk, '@opus/sdk', '@opusai/sdk', opus-api, '@appliedai/opus', opus-workflow]
+  result: all 404; a text search for "opus.com workflow" returned no AAICO-owned package
+  fetched: '2026-09-05'
+- registry: PyPI
+  endpoint: https://pypi.org/pypi/
+  queried: [opus-sdk, opusai, opus-api, appliedai-opus]
+  result: >-
+    opus-sdk, opusai and appliedai-opus 404. opus-api returns 200 but is NOT AAICO's — it is
+    "OPUS (opus.nlpl.eu) Python API" v0.6.2 by Yonathan Koren
+    (https://github.com/yonkornilov/opus-api), an unrelated NLP corpus client. Explicitly rejected
+    on the ownership check.
+  fetched: '2026-09-05'
+- registry: Maven Central
+  result: not searched — no JVM SDK referenced anywhere in AAICO's docs or site
+- registry: NuGet
+  result: not searched — no .NET SDK referenced anywhere in AAICO's docs or site
+- registry: RubyGems / crates.io / Packagist / pkg.go.dev
+  result: not searched — no Ruby, Rust, PHP or Go SDK referenced anywhere in AAICO's docs or site
+other_client_artifacts:
+- name: Opus Job Operator Postman Collection
+  kind: postman-collection
+  official: true
+  registry: cdn
+  distribution: Google Drive download link
+  url: https://developer.opus.com/api-reference/v0-jobs/postman-collection
+  download: https://drive.google.com/open?id=1BMG05fHj33rH3vgw2N9Ma1yoYDogL8va
+  version: null
+  published: null
+  version_note: >-
+    Unversioned and undated. The collection is a Drive file behind a share link with no manifest,
+    no release feed and no version marker, so a consumer cannot tell which API revision it targets
+    — and neither can we. It covers the v0 Jobs endpoints, not the current v1 Case API, which is
+    itself a currency signal.
+  covers: [Get Workflow Details, Initiate Job, Upload File, Execute Job, Get Job Status, Get Job Results, Job Audit Log]
+gaps:
+- No first-party client library in any language on any registry.
+- The only packaged client (Postman) targets the older v0 Jobs API, not the current v1 Case API.
+- No public source repository — AAICO has no discoverable GitHub organization (see below).
+github_organization:
+  found: false
+  note: >-
+    No GitHub organization for AAICO/AppliedAI/Opus was discoverable. github.com/opus-ai resolves
+    to "OpusAI" — an unrelated company ("We turn literary text into living breathing metaverses",
+    website opus.ai, created 2018-07-06) — and is explicitly NOT wired into this record.
+    github.com/AppliedAICo returns 404.
+  checked: '2026-09-05'

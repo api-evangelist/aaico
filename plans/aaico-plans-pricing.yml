@@ -1,0 +1,60 @@
+generated: '2026-09-05'
+method: searched
+source: https://www.opus.com/contact
+docs:
+- https://developer.opus.com/guides/manhours
+- https://developer.opus.com/guides/organization
+plan_count: 0
+public_pricing: false
+note: >-
+  AAICO publishes NO public pricing for Opus. https://www.opus.com/pricing returns HTTP 404 and no
+  pricing or plans page is linked from the product, enterprise or developer navigation; the only
+  commercial route published is a "Talk to Us" contact form, and the commercial terms live in
+  PDF agreements (Enterprise MSA, Subscriber Agreement, Order Form) rather than on a rate card.
+  This is an enterprise contact-sales motion, recorded as plan_count 0 rather than omitted.
+x-evidence:
+- url: https://www.opus.com/pricing
+  status: 404
+  fetched: '2026-09-05'
+- url: https://www.opus.com/contact
+  status: 200
+  fetched: '2026-09-05'
+- url: https://www.opus.com/legal-docs/Opus-Order-Form.pdf
+  status: 200
+  fetched: '2026-09-05'
+plans: []
+billing_model:
+  unit: Manhour
+  description: >-
+    Opus meters usage in "Manhours", its unit for the work a job performs. No price per Manhour is
+    published; the allocation is set per organization under a commercial agreement.
+  charged_when: a job completes successfully
+  not_charged_when: [created, queued, running, failed]
+  also_consumes_manhours:
+  - running previews in the Builder
+  - Prompt to Workflow generation
+  - Opus AI Assist edits
+  estimates: >-
+    An estimate is shown before a run and is always worst-case; on a branching workflow the
+    estimate prices the most expensive path while the actual charge follows the path that ran.
+  usage_reporting: Organization settings -> Plan & Usage -> Usage (timestamp, workflow, workspace, Manhours, remaining balance, actor)
+  source: https://developer.opus.com/guides/manhours
+commercial_documents:
+- name: Opus Enterprise MSA
+  url: https://www.opus.com/legal-docs/Opus-Enterprise-MSA.pdf
+  status: 200
+- name: Opus Subscriber Agreement
+  url: https://www.opus.com/legal-docs/Opus-Subscriber-Agreement.pdf
+  status: 200
+- name: Opus Order Form
+  url: https://www.opus.com/legal-docs/Opus-Order-Form.pdf
+  status: 200
+- name: Master Services Agreement (Partner)
+  url: https://www.opus.com/legal-docs/Master-Services-Agreement-Partner.pdf
+  status: 200
+- name: Opus Partner Marketplace ToS
+  url: https://www.opus.com/legal-docs/Opus-Partner-Marketplace-ToS.pdf
+  status: 200
+- name: Opus Support Service Standards
+  url: https://www.opus.com/legal-docs/Opus-Support-Service-Standards.pdf
+  status: 200

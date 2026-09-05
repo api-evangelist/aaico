@@ -1,23 +1,161 @@
 aid: aaico
-name: Aaico
-description: 'Aaico is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+name: AppliedAI (AAICO)
+description: >-
+  AppliedAI — The Applied AI Company, or AAICO — is an Abu Dhabi headquartered company, founded in
+  2021, that builds AI-native workflow systems for heavily regulated industries: banking, fintech,
+  insurance, healthcare, life sciences and government. Its platform, Opus, lets organizations
+  discover an existing business process, build it as an auditable workflow of AI agents and human
+  review steps, run it, and optimize it — automating document-heavy back-office and mid-office
+  operations while keeping governance, audit trails and human oversight intact. Opus is built on a
+  proprietary Large Work Model and Work Knowledge Graph that encode procedural knowledge. The
+  company publishes a developer hub at developer.opus.com with a REST platform API for generating
+  workflows, running them as cases, uploading files, reading discovered processes and authoring
+  custom integrations, plus a remote MCP server over its documentation, an A2A agent card and a
+  published Agent Skill. AAICO raised a $55M Series A led by G42 with Palantir, Bessemer Venture
+  Partners, McKinsey, e& and Accrete Capital participating.
+image: https://www.aaico.com/images/built-for-momentum.jpg
 url: https://raw.githubusercontent.com/api-evangelist/aaico/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-09-05'
 modified: '2026-09-05'
 tags:
 - Company
-apis: []
+- Artificial Intelligence
+- Workflow Automation
+- Agents
+- Enterprise
+- Document Processing
+- Regulated Industries
+- Business Process Automation
+- Banking
+- Insurance
+- Healthcare
+- Model Context Protocol
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: aaico:opus-platform-api
+  name: Opus Platform API
+  description: >-
+    The Opus REST API. Generate a workflow from a natural-language prompt, run a workflow as a
+    "case" with populated inputs, upload files as case inputs through a presigned-URL flow, poll or
+    receive a callback on case status, retrieve case results and a per-node audit log, read a
+    discovered business process, and author custom integrations, providers and credentials for an
+    organization. Execution is asynchronous; authentication is a static x-service-key header.
+  humanURL: https://developer.opus.com/api-reference/introduction
+  baseURL: https://operator.opus.com/api/v1
+  image: https://www.opus.com/images/og/og-default.jpg
+  tags:
+  - Workflow Automation
+  - Agents
+  - Document Processing
+  - Integrations
+  properties:
+  - type: Documentation
+    url: https://developer.opus.com/api-reference/introduction
+  - type: APIReference
+    url: https://developer.opus.com/api-reference/introduction
+  - type: GettingStarted
+    url: https://developer.opus.com/api-reference/quickstart
+  - type: Authentication
+    url: authentication/aaico-authentication.yml
+  - type: Conventions
+    url: conventions/aaico-conventions.yml
+  - type: ErrorCatalog
+    url: errors/aaico-problem-types.yml
+  - type: RateLimits
+    url: rate-limits/aaico-rate-limits.yml
+  - type: Postman
+    url: https://developer.opus.com/api-reference/v0-jobs/postman-collection
+  - type: Webhooks
+    url: conventions/aaico-conventions.yml
+- aid: aaico:opus-docs-mcp
+  name: Opus Docs MCP Server
+  description: >-
+    A first-party remote MCP server over the Opus developer documentation, reachable anonymously at
+    https://developer.opus.com/mcp over streamable HTTP. Three tools: semantic search across the
+    docs, a read-only virtual-filesystem query for exact/regex matching and full-page reads, and
+    docs feedback submission. Read-only with respect to the Opus platform — it cannot run a
+    workflow or reach a customer account.
+  humanURL: https://developer.opus.com/mcp-setup
+  baseURL: https://developer.opus.com/mcp
+  image: https://www.opus.com/images/og/og-default.jpg
+  tags:
+  - Model Context Protocol
+  - Documentation
+  - Agents
+  properties:
+  - type: MCPServer
+    url: mcp/aaico-mcp.yml
+  - type: Documentation
+    url: https://developer.opus.com/mcp-setup
 common:
 - type: Website
-  url: https://equityzen.com/company/aaico
+  url: https://www.aaico.com/
+- type: DeveloperPortal
+  url: https://developer.opus.com/
+- type: Documentation
+  url: https://developer.opus.com/
+- type: APIReference
+  url: https://developer.opus.com/api-reference/introduction
+- type: GettingStarted
+  url: https://developer.opus.com/quickstart
+- type: Support
+  url: https://www.opus.com/contact
+- type: Blog
+  url: https://www.opus.com/blog
+- type: TermsOfService
+  url: https://www.opus.com/legal-docs/Opus-Subscriber-Agreement.pdf
+- type: PrivacyPolicy
+  url: https://www.opus.com/legal-docs/Opus-Privacy-Policy.pdf
+- type: StatusPage
+  url: https://status.opus.com/
+- type: TrustCenter
+  url: https://trust.opus.com/
+- type: Compliance
+  url: conformance/aaico-conformance.yml
+- type: ChangeLog
+  url: changelog/aaico-changelog.yml
+- type: Lifecycle
+  url: lifecycle/aaico-lifecycle.yml
+- type: MCPServer
+  url: mcp/aaico-mcp.yml
+- type: AgentCard
+  url: a2a/aaico-a2a.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/aaico-llms.txt
+- type: WellKnown
+  url: well-known/aaico-well-known.yml
+- type: Authentication
+  url: authentication/aaico-authentication.yml
+- type: Conventions
+  url: conventions/aaico-conventions.yml
+- type: ErrorCatalog
+  url: errors/aaico-problem-types.yml
+- type: RateLimits
+  url: rate-limits/aaico-rate-limits.yml
+- type: Plans
+  url: plans/aaico-plans-pricing.yml
+- type: Packages
+  url: packages/aaico-packages.yml
+- type: Conformance
+  url: conformance/aaico-conformance.yml
+- type: DomainSecurity
+  url: security/aaico-domain-security.yml
+- type: Postman
+  url: https://developer.opus.com/api-reference/v0-jobs/postman-collection
+- type: Webhooks
+  url: conventions/aaico-conventions.yml
+
+x-enrichment:
+  date: '2026-09-05'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v3

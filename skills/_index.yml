@@ -1,0 +1,20 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.opus.com/.well-known/agent-skills/opus-developer-documentation/skill.md
+note: >-
+  Provider-published Agent Skill, saved verbatim. AAICO publishes this at the A2A agent-skills
+  well-known path on its Opus developer hub; it is referenced by the skills[] array of the
+  Opus Docs agent card. No skill was authored by API Evangelist for this provider.
+skills:
+- id: opus-developer-documentation
+  name: Opus Developer Documentation
+  file: aaico-opus-developer-documentation.md
+  method: searched
+  source: https://developer.opus.com/.well-known/agent-skills/opus-developer-documentation/skill.md
+  http_status: 200
+  published_by: provider
+  api: Opus Docs
+  scope: >-
+    Building, configuring and executing AI-powered enterprise workflows; document-heavy
+    automation; external-service integration; running jobs programmatically; troubleshooting
+    workflow execution.

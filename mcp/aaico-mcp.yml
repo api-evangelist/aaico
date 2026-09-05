@@ -1,0 +1,80 @@
+generated: '2026-09-05'
+method: probed
+source: https://developer.opus.com/mcp
+name: Opus Docs MCP Server
+company: AppliedAI (AAICO)
+description: >-
+  A first-party, publicly reachable MCP server over the Opus developer documentation. It is a
+  READ-ONLY documentation surface: it searches and reads published docs pages and lets a client
+  file docs feedback. It does NOT reach the Opus platform API, a workflow, or a customer account.
+note: >-
+  AAICO's developer surface is published under the Opus product brand; www.aaico.com links
+  straight to developer.opus.com, which is why an opus.com host is accepted as this company's own.
+deployment:
+  mode: remote
+  endpoint: https://developer.opus.com/mcp
+  auth: none
+  verified: probed
+x-evidence:
+  fetched: '2026-09-05'
+  initialize:
+    url: https://developer.opus.com/mcp
+    http_status: 200
+    content_type: text/event-stream
+    protocol_version: '2025-06-18'
+    server_name: Opus Docs
+    server_version: 1.0.0
+  tools_list:
+    url: https://developer.opus.com/mcp
+    http_status: 200
+    content_type: text/event-stream
+    tool_count: 3
+    saved: mcp/aaico-mcp-tools-list.json
+transport: streamable-http
+capabilities:
+  tools: true
+  tools_list_changed: true
+  resources: true
+  resources_list_changed: true
+  prompts: false
+setup_docs: https://developer.opus.com/mcp-setup
+install_examples:
+- client: Claude Code
+  command: claude mcp add --transport http Opus https://developer.opus.com/mcp
+- client: Cursor
+  config: '{"mcpServers":{"Opus":{"url":"https://developer.opus.com/mcp","type":"http"}}}'
+- client: VS Code
+  config: '{"servers":{"Opus":{"type":"http","url":"https://developer.opus.com/mcp"}}}'
+rate_limits:
+- scope: per user (IP)
+  limit: 200
+  window: 1h
+  source: https://developer.opus.com/mcp-setup
+tools:
+- name: search_opus_docs
+  title: Search documentation
+  inputs: [query]
+  read_only: true
+  destructive: false
+  idempotent: true
+  summary: Semantic search across the Opus Docs knowledge base; returns contextual content with titles and page links.
+- name: query_docs_filesystem_opus_docs
+  inputs: [command]
+  read_only: true
+  destructive: false
+  idempotent: true
+  summary: >-
+    Read-only shell-like query (rg, grep, find, tree, ls, cat, head, tail, jq, awk, sed) against a
+    virtualized in-memory filesystem containing only the published Opus docs pages. Stateless per
+    call; no writes, no network, no process control.
+- name: submit_feedback
+  inputs: [path, feedback]
+  read_only: false
+  destructive: false
+  idempotent: false
+  summary: Report an incorrect, outdated, confusing or incomplete documentation page to the Opus docs team.
+gaps:
+- >-
+  There is no MCP server over the Opus PLATFORM API (operator.opus.com/api/v1). An agent can read
+  Opus documentation over MCP but cannot generate a workflow, run a case, or retrieve results over
+  MCP — those remain REST-only behind an x-service-key.

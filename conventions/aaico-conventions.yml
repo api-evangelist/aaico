@@ -1,0 +1,170 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.opus.com/api-reference/introduction
+docs:
+- https://developer.opus.com/api-reference/v1-case/case-introduction
+- https://developer.opus.com/api-reference/v1-workflow-generation/workflow-generation-introduction
+- https://developer.opus.com/api-reference/v1-file/file-introduction
+- https://developer.opus.com/api-reference/v1-workflow-generation/cancel-run
+api: Opus Platform API
+base_url: https://operator.opus.com/api/v1
+note: >-
+  Cross-cutting runtime semantics read from AAICO's published Opus API reference. There is no
+  OpenAPI to derive from; every statement below is anchored to a docs URL or a live probe.
+
+auth:
+  style: static API key in a custom header
+  header: x-service-key
+  scoped: false
+  details: authentication/aaico-authentication.yml
+
+versioning:
+  api_version: v1
+  style: URI path segment (/api/v1)
+  prior_version: v0
+  prior_version_note: >-
+    A v0 Jobs API is still documented alongside v1 (job/jobExecutionId vocabulary rather than
+    case/caseId). Both are published; no sunset date is stated for v0.
+  workflow_versioning: >-
+    A case runs against the LATEST ACTIVE version of its workflow unless pinned at initiation with
+    workflowVersionId or workflowVersionNumber.
+  docs: https://developer.opus.com/api-reference/v1-case/case-introduction
+
+execution_model:
+  asynchronous: true
+  description: >-
+    Execute Case returns as soon as the run is queued. The result arrives either by polling
+    GET /case/{caseId}/status or on a callbackUrl the caller supplies at execute time.
+  terminal_statuses: [COMPLETED, FAILED, CANCELLED, TIMED_OUT]
+  premature_result_read: HTTP 202 with no results
+  concurrency_limit: one active generation run per workflow (409 on a second)
+
+idempotency:
+  coverage: none
+  mechanism: null
+  header: null
+  retention: null
+  evidence: >-
+    The string "idempoten" does not appear anywhere in AAICO's published API reference (checked
+    across all 22 api-reference pages on 2026-09-05). No Idempotency-Key header, no client-supplied
+    request identifier, and no documented replay window exist on any write.
+  risk: >-
+    Every write is unprotected against replay. POST /case creates a new case per call and
+    POST /case/{caseId}/execute starts a billable run; a retried Execute Case after a timeout can
+    re-run and re-bill a workflow. The one partial mitigation is structural rather than
+    contractual: workflow GENERATION rejects a concurrent second run with 409, which limits
+    duplicate generation runs but does not cover case execution, file upload, or integration writes.
+  writes_uncovered:
+  - POST /case
+  - POST /case/{caseId}/execute
+  - POST /file/upload/presigned
+  - POST /workflow/generate
+  - POST /integration/provider
+  - POST /integration
+  - POST /integration/v/{integrationVersionId}/credential
+
+reversibility:
+  grade: documented
+  summary: >-
+    One reversal operation exists and is documented, but it is explicitly a STOP rather than an
+    undo, and no reversal WINDOW is stated anywhere. Nothing already written can be rolled back
+    through the API.
+  operations:
+  - write: POST /workflow/generate (Generate a Workflow)
+    reversal: POST /workflow/{workflowId}/run/cancel (Cancel a Run)
+    reversal_type: cancel
+    window: null
+    window_evidence: >-
+      No time window is published. The docs state only that the run must be in progress; a run
+      that has reached a terminal status cannot be cancelled (404 - no active room or run).
+    rolls_back: false
+    docs_quote: >-
+      "Work already applied to the workflow is kept. Cancelling stops future work — it doesn't roll
+      anything back."
+    docs: https://developer.opus.com/api-reference/v1-workflow-generation/cancel-run
+  - write: POST /case/{caseId}/execute (Execute Case)
+    reversal: null
+    window: null
+    rolls_back: false
+    note: >-
+      No cancel, abort, void or delete is published for a running or completed case. CANCELLED is
+      a terminal case status, so cases can reach it, but no API operation to put them there is
+      documented. Billing is the partial mitigation: Manhours are charged only when a job
+      COMPLETES successfully, so failed runs are not billed — that is a billing property, not a
+      reversal path.
+      (https://developer.opus.com/guides/manhours)
+  - write: POST /integration/provider, POST /integration, POST /integration/v/{id}/credential
+    reversal: null
+    window: null
+    rolls_back: false
+    note: No documented delete or deactivate for a provider, integration or credential created via the API.
+  - write: POST /file/upload/presigned + PUT to the presigned URL
+    reversal: null
+    window: null
+    rolls_back: false
+    note: >-
+      No delete operation is published for an uploaded file. The Opus SDK notes that uploads
+      CREATE a new file and never modify the original, so writes are additive rather than
+      destructive.
+  gaps:
+  - >-
+    An agent cannot determine, before acting, whether an Execute Case can be stopped — there is no
+    documented cancel for a case, only for a workflow GENERATION run.
+  - No stated window on the one reversal that exists, which caps this dimension at `documented`.
+
+pagination:
+  supported: false
+  evidence: >-
+    No pagination parameters, envelope or link headers appear in the published API reference. Every
+    documented read addresses a single resource by id (workflow, case, run, process); there is no
+    list/collection endpoint to paginate.
+
+rate_limit_signaling:
+  response_headers: none documented
+  status_on_exhaustion: 429
+  body_on_exhaustion: '{scope, limit, active} for the active-run limit'
+  retry_after: not documented
+  details: rate-limits/aaico-rate-limits.yml
+  gap: >-
+    No X-RateLimit-* or RateLimit-* headers are documented, so an agent has no runtime budget
+    signal — it learns it is over the limit only by being rejected.
+
+error_envelope:
+  format: plain application/json
+  rfc9457: false
+  fields: [statusCode, message, timestamp, path]
+  details: errors/aaico-problem-types.yml
+
+callbacks:
+  supported: true
+  parameter: callbackUrl
+  set_on: POST /case/{caseId}/execute
+  direction: Opus POSTs the case result to the supplied HTTPS URL when the run finishes
+  requirements: HTTPS, reachable from the Opus platform
+  signing: not documented
+  retries: not documented
+  event_catalog: none published
+  gap: >-
+    This is a per-request callback, not a subscription webhook system: there is no event catalog,
+    no signature verification scheme, and no documented retry/backoff behaviour.
+
+data_types:
+  input_variable_types: [str, float, bool, date, file, array, array_files, object]
+  identifier_format: UUID
+  file_size_limit: 10 MB per file
+  presigned_url_expiry: 60-86400 seconds (Opus SDK presigned_download); server default when unset
+
+dry_run_mode:
+  supported: partial
+  note: >-
+    The Builder offers previews and Manhour ESTIMATES before a run (estimates are worst-case, and
+    conditional branches are priced on the most expensive path), but preview is a UI affordance
+    and is not exposed as an API operation. No dry-run parameter exists on any documented endpoint.
+  docs: https://developer.opus.com/guides/manhours
+
+cross_links:
+  errors: errors/aaico-problem-types.yml
+  lifecycle: lifecycle/aaico-lifecycle.yml
+  authentication: authentication/aaico-authentication.yml
+  rate_limits: rate-limits/aaico-rate-limits.yml
+  conformance: conformance/aaico-conformance.yml

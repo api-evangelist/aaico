@@ -1,0 +1,102 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.opus.com/api-reference/introduction
+docs:
+- https://developer.opus.com/api-reference/v1-case/case-introduction
+- https://developer.opus.com/api-reference/v1-workflow-generation/workflow-generation-introduction
+- https://developer.opus.com/api-reference/v1-integration/integration-introduction
+api: Opus Platform API
+base_url: https://operator.opus.com/api/v1
+format: application/json
+rfc9457: false
+note: >-
+  Assembled from the per-endpoint Errors blocks across the published API reference, plus a live
+  unauthenticated probe of the API host that returned the envelope verbatim. The API does NOT use
+  RFC 9457 problem+json — errors are a plain JSON object with a numeric statusCode and a human
+  message, and there is no machine-readable error type/code registry.
+envelope:
+  content_type: application/json
+  fields:
+  - name: statusCode
+    type: integer
+    description: HTTP status code, repeated in the body.
+  - name: message
+    type: string
+    description: Human-readable message. Not a stable machine-readable code.
+  - name: timestamp
+    type: string
+    description: ISO-8601 timestamp of the failure.
+  - name: path
+    type: string
+    description: The request path that failed.
+  x-evidence:
+    url: https://operator.opus.com/api/v1
+    http_status: 401
+    observed: '{"statusCode":401,"message":"API key is required","timestamp":"2026-09-05T21:50:53.961Z","path":"/api/v1"}'
+    fetched: '2026-09-05'
+  note: >-
+    Endpoint success/typed-error responses additionally carry an optional `error` object alongside
+    `success` and `message` (see Execute Case), so two shapes coexist: the framework envelope above
+    for transport-level failures, and a per-operation body for handled failures.
+problem_types:
+- status: 202
+  title: Accepted
+  meaning: >-
+    Returned by Get Case Results when the case has not reached a terminal status. The request
+    succeeded but there are no results yet.
+  remediation: Poll Get Case Status until a terminal status, or wait for the callbackUrl.
+  operations: [get-case-results]
+- status: 400
+  title: Bad Request
+  meaning: A path or body parameter is malformed — most commonly an identifier that is not a valid UUID.
+  remediation: Validate identifiers as UUIDs and check the body against the documented parameters.
+  operations: [cancel-run, generate-headless, get-run-status, create-provider, create-integration, create-credential]
+- status: 401
+  title: Unauthorized
+  meaning: >-
+    Missing, invalid or expired x-service-key, or the key's user is no longer a member of the
+    organization.
+  remediation: Send a current x-service-key header; regenerate the key from Channels -> API if expired.
+  operations: [all]
+- status: 403
+  title: Forbidden
+  meaning: >-
+    The key is valid but the user lacks the required permission — 'Workflow: Full' in the target
+    workspace, or 'Integration: Full' at organization level.
+  remediation: Grant the named permission at the level the endpoint requires.
+  operations: [cancel-run, generate-headless, get-run-status, get-workflow-details, create-provider, create-integration, create-credential]
+- status: 404
+  title: Not Found
+  meaning: The addressed case, workflow, run, process or integration does not exist or is not visible to this key.
+  remediation: Confirm the identifier and that it belongs to an organization the key can reach.
+  operations: [execute-case, get-case-status, get-case-results, case-audit-log, cancel-run, get-process-details]
+- status: 409
+  title: Conflict
+  meaning: >-
+    The workflow already has a generation run in progress. Only one run is allowed at a time per
+    workflow.
+  remediation: Poll Get Run Status, or Cancel the active run before starting another.
+  operations: [generate-headless]
+- status: 422
+  title: Unprocessable Entity
+  meaning: The request is well-formed but semantically invalid for the target resource.
+  remediation: Re-read the input schema from Get Workflow Details and repopulate the payload.
+- status: 429
+  title: Too Many Requests
+  meaning: >-
+    Either too many ACTIVE RUNS (20 per workspace, 100 per organization — the body carries
+    {scope, limit, active}), or the API key's own sustained-burst rate limit.
+  remediation: >-
+    Read scope/limit/active from the body to tell the two apart; wait for active runs to drain,
+    or slow the request rate.
+  operations: [generate-headless]
+  body_fields: [scope, limit, active]
+- status: 503
+  title: Service Unavailable
+  meaning: Workflow generation is temporarily unavailable.
+  remediation: Retry shortly.
+  operations: [generate-headless]
+gaps:
+- No stable machine-readable error codes — only HTTP status plus an English message string.
+- Not RFC 9457; no `type` URI, no problem type registry, no `instance`.
+- No documented Retry-After header on 429 or 503.

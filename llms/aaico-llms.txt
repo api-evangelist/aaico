@@ -1,0 +1,95 @@
+# Opus Docs
+
+> Welcome to the Opus Developer Hub, where you can learn more about building on the Opus platform.
+
+- [Introduction](https://developer.opus.com/index.md): Design, execute, and govern AI-powered workflows at enterprise scale.
+- [Opus Quickstart](https://developer.opus.com/quickstart.md): Create and execute your first Opus workflow in under 5 minutes.
+- [Opus Docs MCP Server](https://developer.opus.com/mcp-setup.md): Connect Opus documentation to AI-powered development tools using the Model Context Protocol.
+- [Builder](https://developer.opus.com/guides/builder.md): The visual workflow interface for designing, configuring, and testing automation workflows in Opus.
+- [Workflows](https://developer.opus.com/guides/workflows.md): Learn how to build, manage, and run automated workflows in Opus.
+- [Jobs](https://developer.opus.com/guides/jobs.md): Learn how to run workflows and track results in Opus.
+- [Manhours](https://developer.opus.com/guides/manhours.md): Understand how Opus measures and bills usage through Manhours.
+- [Organization](https://developer.opus.com/guides/organization.md): Manage your company's Opus account, billing, team members, and settings.
+- [Workspace](https://developer.opus.com/guides/workspace.md): Team spaces where your workflows, jobs, and collaboration happen in Opus.
+- [Opus Agent](https://developer.opus.com/tasks/agent/opus-agent.md): The default AI workhorse for LLM-based reasoning, extraction, and generation with typed inputs and outputs.
+- [Custom Agent](https://developer.opus.com/tasks/agent/custom-agent.md): Direct control over LLM selection, prompting, and output configuration for advanced AI tasks.
+- [Opus Human Task](https://developer.opus.com/tasks/agent/opus-human-task.md): Pause your automation to collect information from a real person when you need human input to continue.
+- [Decision Agent](https://developer.opus.com/tasks/agent/decision-agent.md): Automatically route your workflow down different paths based on conditions you define.
+- [Human Decision Agent](https://developer.opus.com/tasks/agent/human-decision-agent.md): Pause your workflow for a person to make a routing decision when human judgment is needed.
+- [Opus Code](https://developer.opus.com/tasks/agent/opus-code.md): Write custom Python code when you need logic that other tasks can't handle.
+- [Review Task](https://developer.opus.com/tasks/review.md): Add quality checks to your workflow using human reviewers or AI validation.
+- [Execute Workflow](https://developer.opus.com/tasks/execute-workflow.md): Run another workflow inside your workflow to reuse logic and keep things organized.
+- [Import Data](https://developer.opus.com/tasks/data/import-data.md): Pull files and data from external services into your workflow.
+- [Export Data](https://developer.opus.com/tasks/data/export-data.md): Send files and data from your workflow to external services.
+- [Opus Text Extraction](https://developer.opus.com/tasks/data/opus-text-extraction.md): Extract text from documents and images so your workflow can process them.
+- [External Service](https://developer.opus.com/tasks/data/external-service.md): Connect to any REST API.
+- [Integrations Task](https://developer.opus.com/tasks/data/integrations.md): Use pre-configured integrations from the marketplace in your workflows.
+- [Integrations Marketplace](https://developer.opus.com/integrations/overview.md): Connect Opus workflows with 3,500+ external services and 36,000+ actions.
+- [Introduction](https://developer.opus.com/api-reference/introduction.md): Programmatically generate workflows, upload files, run cases, and retrieve results with the Opus API
+- [API Quickstart](https://developer.opus.com/api-reference/quickstart.md): Get started with the Opus API
+- [Introduction](https://developer.opus.com/api-reference/v1-workflow-generation/workflow-generation-introduction.md): Generate Opus workflows from a natural-language prompt entirely through the API
+- [Generate a Workflow](https://developer.opus.com/api-reference/v1-workflow-generation/generate-headless.md): Create a workflow from a natural-language prompt
+- [Get Run Status](https://developer.opus.com/api-reference/v1-workflow-generation/get-run-status.md): Poll the status and progress of a generation run
+- [Cancel a Run](https://developer.opus.com/api-reference/v1-workflow-generation/cancel-run.md): Stop an in-progress generation run
+- [Get Workflow Details](https://developer.opus.com/api-reference/v1-workflow-generation/get-workflow-details.md): Retrieve the workflow object — name, status, nodes and edges
+- [Introduction](https://developer.opus.com/api-reference/v1-case/case-introduction.md): Run workflows and retrieve their results through the Case API
+- [Initiate Case](https://developer.opus.com/api-reference/v1-case/initiate-case.md): Create a new case for a workflow and receive a caseId
+- [Execute Case](https://developer.opus.com/api-reference/v1-case/execute-case.md): Run a case with populated inputs
+- [Get Case Status](https://developer.opus.com/api-reference/v1-case/get-case-status.md): Poll the execution status of a case
+- [Get Case Results](https://developer.opus.com/api-reference/v1-case/get-case-results.md): Retrieve the output variables of a finished case
+- [Case Audit Log](https://developer.opus.com/api-reference/v1-case/case-audit-log.md): Retrieve the per-node execution audit of a case
+- [Introduction](https://developer.opus.com/api-reference/v1-file/file-introduction.md): Upload files to use as case inputs through the File API
+- [Get Upload URL](https://developer.opus.com/api-reference/v1-file/get-upload-url.md): Generate a presigned URL for uploading files to use as case inputs
+- [Upload File](https://developer.opus.com/api-reference/v1-file/upload-file.md): Upload your file to the presigned URL from Get Upload URL
+- [Introduction](https://developer.opus.com/api-reference/v1-discovery/discovery-introduction.md): Read a discovered business process — its steps, branches, and the data flowing through them
+- [Get a Process](https://developer.opus.com/api-reference/v1-discovery/get-process-details.md): Retrieve a discovered process with its steps, edges and tagged items
+- [Introduction](https://developer.opus.com/api-reference/v1-integration/integration-introduction.md): Author custom integrations for your organization entirely through the API
+- [Create a Provider](https://developer.opus.com/api-reference/v1-integration/create-provider.md): Register the vendor or system an integration is authored under
+- [Create an Integration](https://developer.opus.com/api-reference/v1-integration/create-integration.md): Register a custom integration, optionally with its actions and credential
+- [Add a Credential](https://developer.opus.com/api-reference/v1-integration/create-credential.md): Define how an integration authenticates
+- [Get Workflow Details](https://developer.opus.com/api-reference/v0-jobs/get-workflow-details.md): Retrieve the complete schema and input requirements for a workflow
+- [Initiate Job](https://developer.opus.com/api-reference/v0-jobs/initiate-job.md): Create a new job instance and receive a jobExecutionId
+- [Get Upload URL](https://developer.opus.com/api-reference/v0-jobs/get-upload-url.md): Generate a presigned URL for uploading files to use as job inputs
+- [Upload File](https://developer.opus.com/api-reference/v0-jobs/upload-file.md): Upload your file to the presigned URL from Get Upload URL
+- [Execute Job](https://developer.opus.com/api-reference/v0-jobs/execute-job.md): Run a workflow with populated inputs
+- [Get Job Execution Status](https://developer.opus.com/api-reference/v0-jobs/get-job-status.md): Check the current status of a job execution
+- [Get Job Execution Results](https://developer.opus.com/api-reference/v0-jobs/get-job-results.md): Retrieve the output and results of a completed job
+- [Job Audit Log](https://developer.opus.com/api-reference/v0-jobs/job-audit-log.md): Retrieve node-by-node execution data for a job
+- [Postman Collection](https://developer.opus.com/api-reference/v0-jobs/postman-collection.md): Pre-built API request templates to get started quickly
+- [Opus SDK](https://developer.opus.com/opus-sdk/overview.md): Work with files in Opus storage from inside an Opus Code task — download, create, and upload files with the Opus SDK.
+- [Available Packages](https://developer.opus.com/opus-sdk/available-packages.md): Python standard-library and third-party packages available inside Opus Code.
+- [Working with File Formats](https://developer.opus.com/opus-sdk/file-formats.md): Recipes for reading and writing CSV, XML, XLSX, PDF, DOCX, and PPTX files with the Opus SDK.
+- [v2.6 (Aug 31, 2026)](https://developer.opus.com/release-notes/opus-v2-6.md): Released 31 August 2026.
+- [v2.5 (Aug 13, 2026)](https://developer.opus.com/release-notes/opus-v2-5.md): Released 13 August 2026.
+- [v2.4 (Jul 31, 2026)](https://developer.opus.com/release-notes/opus-v2-4.md): Released 31 July 2026.
+- [v2.3 (Jul 17, 2026)](https://developer.opus.com/release-notes/opus-v2-3.md): Released 17 July 2026.
+- [v2.2 (Jul 3, 2026)](https://developer.opus.com/release-notes/opus-v2-2.md): Released 3 July 2026.
+- [v2.1 (Jun 18, 2026)](https://developer.opus.com/release-notes/opus-v2-1.md): Released Jun 18, 2026.
+- [v2.0 (Jun 2, 2026)](https://developer.opus.com/release-notes/opus-v2-0.md): Released Jun 2, 2026.
+- [v1.6 (Mar 3, 2026)](https://developer.opus.com/release-notes/opus-v1-6.md): Released Mar 3, 2026.
+- [v1.5 (Feb 16, 2026)](https://developer.opus.com/release-notes/opus-v1-5.md): Released Feb 16, 2026.
+- [v1.4 (Jan 29, 2026)](https://developer.opus.com/release-notes/opus-v1-4.md): Released Jan 29, 2026.
+- [v1.3 (Jan 23, 2026)](https://developer.opus.com/release-notes/opus-v1-3.md): Released Jan 23, 2026.
+- [v1.2 (Jan 20, 2026)](https://developer.opus.com/release-notes/opus-v1-2.md): Released Jan 20, 2026.
+- [v1.1 (Jan 15, 2026)](https://developer.opus.com/release-notes/opus-v1-1.md): Released Jan 15, 2026.
+- [v1.02 (Dec 18, 2025)](https://developer.opus.com/release-notes/opus-v1-02.md): Released Dec 18, 2025.
+- [v1.01 (Dec 11, 2025)](https://developer.opus.com/release-notes/opus-v1-01.md): Released Dec 11, 2025.
+- [v1.0 (Nov 28, 2025)](https://developer.opus.com/release-notes/opus-v1-0.md): Released Nov 28, 2025.
+- [v0.99 Beta (Nov 25, 2025)](https://developer.opus.com/release-notes/opus-v0-99-beta.md): Released Nov 25, 2025.
+- [v0.98 Beta (Nov 18, 2025)](https://developer.opus.com/release-notes/opus-v0-98-beta.md): Released Nov 18, 2025.
+- [v0.97 Beta (Nov 11, 2025)](https://developer.opus.com/release-notes/opus-v0-97-beta.md): Released Nov 11, 2025.
+- [v0.96 Beta (Nov 6, 2025)](https://developer.opus.com/release-notes/opus-v0-96-beta.md): Released Nov 6, 2025.
+- [v0.95 Beta (Nov 4, 2025)](https://developer.opus.com/release-notes/opus-v0-95-beta.md): Released Nov 4, 2025.
+- [v0.94 Beta (Oct 30, 2025)](https://developer.opus.com/release-notes/opus-v0-94-beta.md): Released Oct 30, 2025.
+- [v0.93 Beta (Oct 28, 2025)](https://developer.opus.com/release-notes/opus-v0-93-beta.md): Released Oct 28, 2025.
+- [v0.92 Beta (Oct 23, 2025)](https://developer.opus.com/release-notes/opus-v0-92-beta.md): Released Oct 23, 2025.
+- [v0.91 Beta (Oct 21, 2025)](https://developer.opus.com/release-notes/opus-v0-91-beta.md): Released Oct 21, 2025.
+- [v0.90 Beta (Oct 16, 2025)](https://developer.opus.com/release-notes/opus-v0-90-beta.md): Released Oct 16, 2025.
+- [v0.89 Beta (Oct 14, 2025)](https://developer.opus.com/release-notes/opus-v0-89-beta.md): Released Oct 14, 2025.
+- [v0.88 Beta (Oct 9, 2025)](https://developer.opus.com/release-notes/opus-v0-88-beta.md): Released Oct 9, 2025.
+- [v0.87 Beta (Oct 7, 2025)](https://developer.opus.com/release-notes/opus-v0-87-beta.md): Released Oct 7, 2025.
+- [v0.86 Beta (Oct 3, 2025)](https://developer.opus.com/release-notes/opus-v0-86-beta.md): Released Oct 3, 2025.
+
+## OpenAPI Specs
+
+- [openapi](/api-reference/openapi.json)

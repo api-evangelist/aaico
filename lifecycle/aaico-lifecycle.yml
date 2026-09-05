@@ -1,0 +1,73 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.opus.com/api-reference/v1-case/case-introduction
+docs:
+- https://status.opus.com/
+- https://developer.opus.com/llms.txt
+- https://www.opus.com/legal-docs/Opus-Support-Service-Standards.pdf
+api: Opus Platform API
+versioning:
+  scheme: URI path segment
+  current: v1
+  base_url: https://operator.opus.com/api/v1
+  previous: v0
+  previous_note: >-
+    A v0 Jobs API remains published in the API reference alongside v1 (job / jobExecutionId
+    vocabulary; v1 renames the concept to case / caseId). Both are documented as current; v0 is
+    not marked deprecated and carries no sunset date.
+  workflow_versioning: >-
+    Workflows are independently versioned. A case runs the latest ACTIVE workflow version unless
+    pinned with workflowVersionId or workflowVersionNumber at initiation.
+  product_versioning: Opus product releases run on their own major.minor line, currently 2.6.
+deprecation_policy:
+  published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  notice_period: null
+  evidence: >-
+    No deprecation or sunset policy is published anywhere on the developer hub. No RFC 8594 Sunset
+    or Deprecation header is documented on any endpoint, and no operation is marked deprecated.
+    The v0 Jobs API — superseded in substance by v1 Cases — carries no deprecation notice at all,
+    which is the clearest evidence that no policy exists rather than that nothing is yet deprecated.
+  gap: >-
+    An integrator on the v0 Jobs API has no published signal about how long it will keep working
+    or how much notice they would receive.
+deprecated_operations: []
+status_page:
+  published: true
+  url: https://status.opus.com/
+  provider: Instatus
+  title: Opus | Status
+  http_status: 200
+  fetched: '2026-09-05'
+  machine_readable_feed: not verified
+sla:
+  published: false
+  public_uptime_target: null
+  note: >-
+    No public SLA or uptime target. Support commitments are published only as a PDF —
+    https://www.opus.com/legal-docs/Opus-Support-Service-Standards.pdf (HTTP 200) — and the
+    Enterprise MSA / Subscriber Agreement carry the contractual terms. Nothing is stated on a web
+    page an agent or evaluator can read.
+support:
+  channels:
+  - type: contact form
+    url: https://www.opus.com/contact
+  - type: community
+    url: https://discord.com/invite/M5nBqhkUYH
+    note: Discord invite linked from the Opus site footer.
+  service_standards_pdf: https://www.opus.com/legal-docs/Opus-Support-Service-Standards.pdf
+changelog:
+  published: true
+  url: https://developer.opus.com/release-notes/opus-v2-6
+  details: changelog/aaico-changelog.yml
+maturity:
+  first_public_release: '2025-10-03'
+  general_availability: '2025-11-28'
+  releases_published: 30
+  note: Young but actively and regularly shipped — 30 dated releases in the 11 months to 2026-08-31.
+gaps:
+- No deprecation or sunset policy, and no Sunset/Deprecation headers.
+- v0 and v1 both presented as current with no migration guidance between them.
+- No public SLA or uptime target; service standards are PDF-only.

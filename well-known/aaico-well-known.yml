@@ -1,0 +1,267 @@
+generated: '2026-09-05'
+method: probed
+source: Direct HTTPS probe of each named /.well-known/ path on every host this record knows.
+note: 'Every host AAICO''s record knows was probed on the named path list: the corporate domain (aaico.com),
+  the product/marketing site (opus.com), the developer hub, the API host (operator.opus.com), the app,
+  the trust center, the status page and the file host. EXACTLY ONE real document is served: the A2A agent
+  card on developer.opus.com. app.opus.com and trust.opus.com answer 200 with an SPA HTML shell for every
+  /.well-known/* path — those are catch-alls, not documents, and are recorded as misses. No security.txt,
+  no api-catalog and no OAuth/OIDC discovery document is published on any host; the platform API authenticates
+  with a static x-service-key header, so there is no authorization server to describe.'
+summary:
+  hosts_probed: 10
+  paths_per_host: 7
+  probes: 70
+  real_documents: 1
+  spa_shell_false_positives: 14
+  security_txt: false
+  api_catalog: false
+  oauth_discovery: false
+  openid_configuration: false
+hosts:
+- host: aaico.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+- host: www.aaico.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+- host: opus.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+- host: www.opus.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+- host: developer.opus.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: aaico-agent-card.json
+    content_type: application/json
+    note: Real A2A Agent Card, saved verbatim. Also mirrored to a2a/aaico-agent-card.json.
+- host: operator.opus.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+- host: app.opus.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+- host: trust.opus.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    note: 200 returns the app/SPA HTML shell, not a document. Counted as a MISS.
+- host: status.opus.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+- host: files.opus.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null

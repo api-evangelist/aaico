@@ -1,0 +1,82 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.opus.com/api-reference/v1-workflow-generation/generate-headless
+docs:
+- https://developer.opus.com/api-reference/v1-workflow-generation/workflow-generation-introduction
+- https://developer.opus.com/api-reference/v1-integration/integration-introduction
+- https://developer.opus.com/mcp-setup
+limit_count: 3
+note: >-
+  AAICO publishes concurrency limits with real numbers, but does NOT publish the numeric rate limit
+  on the API key itself, and publishes no rate-limit response headers on the platform API. The
+  documentation-MCP server is the only surface with a published request-rate number.
+rate_limits:
+- id: active-runs-per-workspace
+  scope: per-workspace
+  kind: concurrency
+  limit: 20
+  unit: active generation runs
+  window: concurrent
+  status_on_exhaustion: 429
+  response_body_fields: [scope, limit, active]
+  headers: none documented
+  api: Opus Platform API
+  source: https://developer.opus.com/api-reference/v1-workflow-generation/generate-headless
+- id: active-runs-per-organization
+  scope: per-organization
+  kind: concurrency
+  limit: 100
+  unit: active generation runs
+  window: concurrent
+  status_on_exhaustion: 429
+  response_body_fields: [scope, limit, active]
+  headers: none documented
+  api: Opus Platform API
+  source: https://developer.opus.com/api-reference/v1-workflow-generation/generate-headless
+- id: mcp-docs-per-ip
+  scope: per-user (IP)
+  kind: request-rate
+  limit: 200
+  unit: requests
+  window: 1h
+  status_on_exhaustion: not documented
+  headers: none documented
+  api: Opus Docs MCP Server
+  source: https://developer.opus.com/mcp-setup
+undocumented_limits:
+- id: api-key-burst
+  scope: per-key
+  kind: request-rate
+  limit: null
+  window: null
+  status_on_exhaustion: 429
+  note: >-
+    The docs state twice that "keys are rate limited — sustained bursts return 429, independent of
+    the active-run limits", but never publish the number or the window. An integrator cannot size
+    a client against it.
+  source: https://developer.opus.com/api-reference/v1-workflow-generation/workflow-generation-introduction
+per_workflow:
+  concurrent_generation_runs: 1
+  status_on_exhaustion: 409
+  note: A workflow may have only one generation run in progress; a second returns 409 Conflict.
+  source: https://developer.opus.com/api-reference/v1-workflow-generation/generate-headless
+other_limits:
+- id: file-size
+  limit: 10
+  unit: MB
+  scope: per uploaded file
+  source: https://developer.opus.com/api-reference/introduction
+- id: presigned-url-expiry
+  min: 60
+  max: 86400
+  unit: seconds
+  scope: per presigned download URL
+  source: https://developer.opus.com/opus-sdk/overview
+response_headers:
+  published: []
+  x_ratelimit: false
+  ratelimit_rfc9331: false
+  retry_after: false
+  gap: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header is documented on any endpoint. The only
+    runtime signal is the 429 body's {scope, limit, active}, and only for the active-run limit.

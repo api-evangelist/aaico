@@ -1,0 +1,68 @@
+generated: '2026-09-05'
+method: searched
+source: https://developer.opus.com/release-notes/opus-v2-6
+docs: https://developer.opus.com/llms.txt
+name: Opus Release Notes
+scheme: semantic-ish (major.minor), with per-item change IDs of the form vX.Y-NNN
+current_version: '2.6'
+current_version_date: '2026-08-31'
+first_published_version: 0.86 Beta
+first_published_date: '2025-10-03'
+cadence: >-
+  Roughly every two weeks. 30 dated releases published between 2025-10-03 and 2026-08-31, moving
+  from weekly beta drops in late 2025 to a fortnightly minor cadence through 2026.
+entries_published: 30
+breaking_changes_flagged: false
+note: >-
+  AAICO publishes a genuinely dated, itemised release-notes section on its developer hub, indexed
+  in llms.txt, with every release reachable at its own URL and individual changes carrying stable
+  IDs (e.g. v2.6-001). Releases are badged Minor/Major but no entry in the published window is
+  marked breaking, and there is no separate API changelog — platform and API changes are mixed
+  into one product stream, so an API consumer cannot filter for contract-affecting changes.
+sections_per_release: [Digital Twin, Discover, Build, Run, Optimize]
+recent_entries:
+- version: '2.6'
+  date: '2026-08-31'
+  badge: Minor
+  url: https://developer.opus.com/release-notes/opus-v2-6
+  breaking: false
+  highlights:
+  - Field-level locking so several people can edit the same process step concurrently
+  - Version history with non-destructive rollback to an earlier process version
+  - Process-level metadata side drawer (objective, volume, duration, systems, pain points)
+  - Minimap for large process canvases
+  - Reworked Members page; org-unit tagging across the File Library
+  - Builder: copy node as Markdown, copy every variable at once, dates that resolve at run time
+  - OCR fixed on PDF inputs; input node accepts batches of 150+ files
+- version: '2.5'
+  date: '2026-08-13'
+  url: https://developer.opus.com/release-notes/opus-v2-5
+- version: '2.4'
+  date: '2026-07-31'
+  url: https://developer.opus.com/release-notes/opus-v2-4
+- version: '2.3'
+  date: '2026-07-17'
+  url: https://developer.opus.com/release-notes/opus-v2-3
+- version: '2.2'
+  date: '2026-07-03'
+  url: https://developer.opus.com/release-notes/opus-v2-2
+- version: '2.1'
+  date: '2026-06-18'
+  url: https://developer.opus.com/release-notes/opus-v2-1
+- version: '2.0'
+  date: '2026-06-02'
+  url: https://developer.opus.com/release-notes/opus-v2-0
+- version: '1.6'
+  date: '2026-03-03'
+  url: https://developer.opus.com/release-notes/opus-v1-6
+- version: '1.5'
+  date: '2026-02-16'
+  url: https://developer.opus.com/release-notes/opus-v1-5
+- version: '1.0'
+  date: '2025-11-28'
+  url: https://developer.opus.com/release-notes/opus-v1-0
+  note: First generally-available release, after eight beta drops from v0.86.
+gaps:
+- No API-specific changelog; contract changes are not separable from product changes.
+- No release is flagged breaking, and there is no migration-notes convention.
+- No RSS/Atom feed or machine-readable changelog format is published.
