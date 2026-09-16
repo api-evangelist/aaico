@@ -23,6 +23,19 @@ modified: '2026-09-05'
 tags:
 - Company
 - Artificial Intelligence
+- Workflow-Automation
+- Agents
+- Enterprise
+- Document Processing
+- Regulated Industries
+- Business Process Automation
+- Banking
+- Insurance
+- Healthcare
+- MCP
+tags_raw:
+- Company
+- Artificial Intelligence
 - Workflow Automation
 - Agents
 - Enterprise
@@ -51,6 +64,11 @@ apis:
   baseURL: https://operator.opus.com/api/v1
   image: https://www.opus.com/images/og/og-default.jpg
   tags:
+  - Workflow-Automation
+  - Agents
+  - Document Processing
+  - Integration
+  tags_raw:
   - Workflow Automation
   - Agents
   - Document Processing
@@ -86,6 +104,10 @@ apis:
   baseURL: https://developer.opus.com/mcp
   image: https://www.opus.com/images/og/og-default.jpg
   tags:
+  - MCP
+  - Documentation
+  - Agents
+  tags_raw:
   - Model Context Protocol
   - Documentation
   - Agents
