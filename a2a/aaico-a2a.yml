@@ -3,10 +3,7 @@ method: probed
 source: https://developer.opus.com/.well-known/agent-card.json
 name: Opus Docs Agent Card
 company: AppliedAI (AAICO)
-note: >-
-  AAICO ships its developer surface under the Opus product brand on opus.com; www.aaico.com is the
-  corporate site and links directly to the Opus product, developer hub and trust center, which is
-  why an opus.com host is accepted as this company's own domain.
+note: AAICO ships its developer surface under the Opus product brand on opus.com; www.aaico.com is the corporate site and links directly to the Opus product, developer hub and trust center, which is why an opus.com host is accepted as this company's own domain.
 discovery:
   path: /.well-known/agent-card.json
   canonical: true
@@ -27,13 +24,8 @@ card:
   skills_count: 1
   skill_ids:
   - opus-developer-documentation
-grade: near-conformant
-grade_basis: >-
-  Hard checks against A2A 1.0.0 all pass — capabilities is an OBJECT, protocolVersion is present,
-  and skills is an ARRAY. preferredTransport, defaultInputModes and defaultOutputModes are all
-  present. Graded near-conformant rather than conformant because protocolVersion declares 0.3
-  rather than a 1.0.0-series version, and the card describes the documentation site rather than a
-  callable agent surface over the Opus platform API.
+  file: a2a/aaico-agent-card.json
+grade_basis: Hard checks against A2A 1.0.0 all pass — capabilities is an OBJECT, protocolVersion is present, and skills is an ARRAY. preferredTransport, defaultInputModes and defaultOutputModes are all present. Graded near-conformant rather than conformant because protocolVersion declares 0.3 rather than a 1.0.0-series version, and the card describes the documentation site rather than a callable agent surface over the Opus platform API.
 deviations:
 - field: protocolVersion
   observed: '0.3'
@@ -46,10 +38,9 @@ deviations:
   note: Skill carries an empty tags array, so the skill is not discoverable by tag.
 - field: scope
   observed: documentation-only
-  note: >-
-    The card and its single skill point at the docs site, not at the Opus platform API on
-    operator.opus.com. An agent that reads this card learns how to read Opus documentation, not
-    how to run an Opus workflow.
+  note: The card and its single skill point at the docs site, not at the Opus platform API on operator.opus.com. An agent that reads this card learns how to read Opus documentation, not how to run an Opus workflow.
 related:
   agent_skill: https://developer.opus.com/.well-known/agent-skills/opus-developer-documentation/skill.md
   mcp_endpoint: https://developer.opus.com/mcp
+conformance:
+  grade: near-conformant
