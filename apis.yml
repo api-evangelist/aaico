@@ -27,7 +27,7 @@ x-docs-hosting: vercel
 tags:
 - Company
 - Artificial Intelligence
-- Workflow-Automation
+- Workflow Automation
 - Agents
 - Enterprise
 - Document Processing
@@ -37,6 +37,7 @@ tags:
 - Insurance
 - Healthcare
 - MCP
+- A2A
 tags_raw:
 - Company
 - Artificial Intelligence
@@ -50,6 +51,8 @@ tags_raw:
 - Insurance
 - Healthcare
 - Model Context Protocol
+- Workflow-Automation
+- A2A
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -68,7 +71,7 @@ apis:
   baseURL: https://operator.opus.com/api/v1
   image: https://www.opus.com/images/og/og-default.jpg
   tags:
-  - Workflow-Automation
+  - Workflow Automation
   - Agents
   - Document Processing
   - Integration
@@ -77,6 +80,7 @@ apis:
   - Agents
   - Document Processing
   - Integrations
+  - Workflow-Automation
   properties:
   - type: Documentation
     url: https://developer.opus.com/api-reference/introduction
@@ -185,3 +189,10 @@ x-enrichment:
   status: enriched
   artifacts_added: 16
   pass: local-v3
+x-a2a:
+  verified: true
+  probed: '2026-09-26'
+  url: "https://developer.opus.com/.well-known/agent-card.json"
+  grade: "conformant"
+  protocol_version: "0.3"
+  control: 404
