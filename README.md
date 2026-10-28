@@ -1,4 +1,4 @@
-# Aaico
+# AppliedAI (AAICO)
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,5 +64,116 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Aaico is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://equityzen.com/company/aaico
+AppliedAI — The Applied AI Company, or AAICO — is an Abu Dhabi headquartered company, founded in 2021, that builds AI-native workflow systems for heavily regulated industries: banking, fintech, insurance, healthcare, life sciences and government. Its platform, Opus, lets organizations discover an existing business process, build it as an auditable workflow of AI agents and human review steps, run it, and optimize it — automating document-heavy back-office and mid-office operations while keeping governance, audit trails and human oversight intact. Opus is built on a proprietary Large Work Model and Work Knowledge Graph that encode procedural knowledge. The company publishes a developer hub at developer.opus.com with a REST platform API for generating workflows, running them as cases, uploading files, reading discovered processes and authoring custom integrations, plus a remote MCP server over its documentation, an A2A agent card and a published Agent Skill. AAICO raised a $55M Series A led by G42 with Palantir, Bessemer Venture Partners, McKinsey, e& and Accrete Capital participating.
+
+**Areas:** Company · Artificial Intelligence · Workflow Automation · Agents · Enterprise · Document Processing · Regulated Industries · Business Process Automation · Banking · Insurance · Healthcare · MCP
+
+## AppliedAI (AAICO) on APIs.io
+
+Everything profiled for AppliedAI (AAICO) is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/aaico/](https://apis.io/providers/aaico/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Opus Platform API](https://apis.io/apis/aaico/opus-platform-api/) — The Opus REST API. Generate a workflow from a natural-language prompt, run a workflow as a "case" with populated inputs, upload files as case inputs through…
+- [Opus Docs MCP Server](https://apis.io/apis/aaico/opus-docs-mcp/) — A first-party remote MCP server over the Opus developer documentation, reachable anonymously at https://developer.opus.com/mcp over streamable HTTP. Three…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Opus Docs MCP Server](https://apis.io/servers/aaico/opus-docs-mcp-server/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Aaico Authentication](https://apis.io/security/aaico/aaico-authentication/)
+- [Aaico Domain Security](https://apis.io/security/aaico/aaico-domain-security/)
+- [Aaico Trust Center](https://apis.io/security/aaico/aaico-trust-center/)
+- [Aaico Vulnerability Disclosure](https://apis.io/security/aaico/aaico-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Aaico Plans Pricing](https://apis.io/plans/aaico/aaico-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Aaico Rate Limits](https://apis.io/rate-limits/aaico/aaico-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.aaico.com/)
+- [Documentation](https://developer.opus.com/)
+- [Getting started](https://developer.opus.com/quickstart)
+- [API reference](https://developer.opus.com/api-reference/introduction)
+- [Support](https://www.opus.com/contact)
+- [Blog](https://www.opus.com/blog)
+- [Trust centre](https://trust.opus.com/)
+- [Terms of service](https://www.opus.com/legal-docs/Opus-Subscriber-Agreement.pdf)
+- [Privacy policy](https://www.opus.com/legal-docs/Opus-Privacy-Policy.pdf)
+- [Status](https://status.opus.com/)
+
+## API Evangelist rating
+
+**Kin Score 38.1** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 63.2 |
+| Developer ergonomics | 69.0 |
+| Access clarity | 28.9 |
+
+**Agent readiness 22.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | unknown |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | near-conformant (partial credit) |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 20.5** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aaico/](https://apis.io/providers/aaico/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for AppliedAI (AAICO): the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/aaico/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
