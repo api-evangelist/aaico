@@ -91,22 +91,22 @@ Model Context Protocol servers that expose the API to agents.
 
 Authentication, trust centre, and vulnerability disclosure.
 
-- [Aaico Authentication](https://apis.io/security/aaico/aaico-authentication/)
-- [Aaico Domain Security](https://apis.io/security/aaico/aaico-domain-security/)
-- [Aaico Trust Center](https://apis.io/security/aaico/aaico-trust-center/)
-- [Aaico Vulnerability Disclosure](https://apis.io/security/aaico/aaico-vulnerability-disclosure/)
+- [AppliedAI (AAICO) Authentication](https://apis.io/security/aaico/aaico-authentication/)
+- [AppliedAI (AAICO) Domain Security](https://apis.io/security/aaico/aaico-domain-security/)
+- [AppliedAI (AAICO) Trust Center](https://apis.io/security/aaico/aaico-trust-center/)
+- [AppliedAI (AAICO) Vulnerability Disclosure](https://apis.io/security/aaico/aaico-vulnerability-disclosure/)
 
 #### Plans and pricing (1)
 
 Published plans, tiers and prices.
 
-- [Aaico Plans Pricing](https://apis.io/plans/aaico/aaico-plans-pricing/)
+- [AppliedAI (AAICO) Plans Pricing](https://apis.io/plans/aaico/aaico-plans-pricing/)
 
 #### Rate limits (1)
 
 Published request limits.
 
-- [Aaico Rate Limits](https://apis.io/rate-limits/aaico/aaico-rate-limits/)
+- [AppliedAI (AAICO) Rate Limits](https://apis.io/rate-limits/aaico/aaico-rate-limits/)
 
 ## Where to find this API
 
@@ -125,18 +125,18 @@ Links to the company's own pages. This repository publishes no copy of their spe
 
 ## API Evangelist rating
 
-**Kin Score 38.1** — thin · rubric 0.25.0 · scored 2026-10-23
+**Kin Score 38.4** — thin · rubric 0.28.1 · scored 2026-11-21
 
 | Facet | Score |
 |---|---|
 | Discoverability | 75.0 |
 | Contract quality | 0.0 |
 | Contract governance | 18.2 |
-| Operational transparency | 63.2 |
+| Operational transparency | 57.1 |
 | Developer ergonomics | 69.0 |
-| Access clarity | 28.9 |
+| Access clarity | 38.3 |
 
-**Agent readiness 22.3** — agent-aware
+**Agent readiness 25.5** — agent-aware
 
 | Agent-readiness dimension | Result |
 |---|---|
@@ -161,8 +161,12 @@ Links to the company's own pages. This repository publishes no copy of their spe
 | Agentic Commerce | — |
 | Pagination Ratio | na |
 | Operation Distinctiveness | na |
+| MCP Tool Quality | full |
+| Onboarding Descriptor | — |
+| Dns Aid Index | na |
+| Markdown Negotiation | yes |
 
-**Regulatory alignment 20.5** — Insurance
+**Regulatory alignment 15.6** — Insurance
 
 The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/aaico/](https://apis.io/providers/aaico/).
 
